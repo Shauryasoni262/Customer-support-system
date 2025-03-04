@@ -220,3 +220,163 @@ header {
         margin-left: 250px;
     }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* Messages Section */
+.messages-container {
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 600px;
+    padding: 2rem;
+    margin: auto;
+}
+
+.messages-header {
+    text-align: center;
+    margin-bottom: 1rem;
+}
+
+.chat-box {
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    padding: 1rem;
+    height: 300px;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+}
+
+.message {
+    max-width: 70%;
+    padding: 10px;
+    border-radius: 10px;
+    margin: 5px 0;
+    font-size: 1rem;
+}
+
+.received {
+    background: #ecf0f1;
+    align-self: flex-start;
+}
+
+.sent {
+    background: #3498db;
+    color: white;
+    align-self: flex-end;
+}
+
+.timestamp {
+    font-size: 0.8rem;
+    color: #7f8c8d;
+    display: block;
+    margin-top: 5px;
+    text-align: right;
+}
+
+.chat-input {
+    display: flex;
+    margin-top: 1rem;
+}
+
+.chat-input input {
+    flex: 1;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 1rem;
+}
+
+.chat-input button {
+    padding: 10px 15px;
+    border: none;
+    background: #3498db;
+    color: white;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-left: 10px;
+}
+
+.chat-input button:hover {
+    background: #2980b9;
+}
+
+
+
+
+
+.profile-container {
+    text-align: center;
+    padding: 20px;
+}
+
+.profile-avatar {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    margin-bottom: 10px;
+}
+
+.profile-info {
+    margin-bottom: 20px;
+}
+
+.profile-info p {
+    margin: 5px 0;
+}
+
+.edit-profile-form {
+    max-width: 400px;
+    margin: auto;
+    text-align: left;
+}
+
+.edit-profile-form label {
+    display: block;
+    font-weight: bold;
+    margin-top: 10px;
+}
+
+.edit-profile-form input {
+    width: 100%;
+    padding: 8px;
+    margin-top: 5px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.edit-profile-form button {
+    margin-top: 10px;
+    padding: 8px 15px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+#edit-profile {
+    background: #007bff;
+    color: white;
+}
+
+#save-profile {
+    background: #28a745;
+    color: white;
+}
+
+#cancel-profile {
+    background: #dc3545;
+    color: white;
+}

@@ -3,8 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dashboard - Customer Support System</title>
+    <title>Customer Support System</title>
     <link rel="stylesheet" href="dashboard.css">
+    <link rel="stylesheet" href="create-ticket.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
 <body>
@@ -17,10 +18,11 @@
             </div>
             <nav>
                 <ul>
-                    <li class="active"><a href="#"><i class="fas fa-home"></i> Dashboard</a></li>
-                    <li><a href="#"><i class="fas fa-ticket-alt"></i> Tickets</a></li>
-                    <li><a href="#"><i class="fas fa-comments"></i> Messages</a></li>
-                    <li><a href="#"><i class="fas fa-cog"></i> Settings</a></li>
+                    <li class="active"><a href="#" id="dashboard-link"><i class="fas fa-home"></i> Dashboard</a></li>
+                    <li><a href="#" id="create-ticket-link"><i class="fas fa-ticket-alt"></i> Create Ticket</a></li>
+<li><a href="#" id="messages-link"><i class="fas fa-comments"></i> Messages</a></li>
+
+                    <li><a href="#" id="profile-link"><i class="fas fa-user"></i> Profile</a></li>
                 </ul>
             </nav>
         </div>
@@ -33,7 +35,7 @@
                     <div class="hamburger" id="hamburger">
                         <i class="fas fa-bars"></i>
                     </div>
-                    <h1>Dashboard</h1>
+                    <h1 id="page-title">Dashboard</h1>
                 </div>
                 <div class="user-profile">
                     <span>Welcome, There</span>
@@ -41,44 +43,145 @@
                 </div>
             </header>
 
-            <!-- Stats Cards -->
-            <div class="stats">
-                <div class="card">
-                    <i class="fas fa-ticket-alt"></i>
-                    <h3>Open Tickets</h3>
-                    <p>12</p>
+            <!-- Dashboard Content -->
+            <div class="content" id="dashboard-content">
+                <!-- Stats Cards -->
+                <div class="stats">
+                    <div class="card">
+                        <i class="fas fa-ticket-alt"></i>
+                        <h3>Open Tickets</h3>
+                        <p>12</p>
+                    </div>
+                    <div class="card">
+                        <i class="fas fa-check-circle"></i>
+                        <h3>Resolved Tickets</h3>
+                        <p>45</p>
+                    </div>
+                    <div class="card">
+                        <i class="fas fa-comments"></i>
+                        <h3>New Messages</h3>
+                        <p>3</p>
+                    </div>
                 </div>
-                <div class="card">
-                    <i class="fas fa-check-circle"></i>
-                    <h3>Resolved Tickets</h3>
-                    <p>45</p>
-                </div>
-                <div class="card">
-                    <i class="fas fa-comments"></i>
-                    <h3>New Messages</h3>
-                    <p>3</p>
+
+                <!-- Ticket List -->
+                <div class="ticket-list">
+                    <h2>Recent Tickets</h2>
+                    <div class="ticket-card">
+                        <div class="ticket-header">
+                            <span class="ticket-id">#12345</span>
+                            <span class="ticket-status open">Open</span>
+                        </div>
+                        <h3 class="ticket-title">Login Issue</h3>
+                        <p class="ticket-description">Unable to log in to the system. Getting an error message.</p>
+                        <div class="ticket-footer">
+                            <span class="ticket-date">Created on: 2023-10-01</span>
+                            <button class="view-details">View Details</button>
+                        </div>
+                    </div>
                 </div>
             </div>
 
-            <!-- Ticket List -->
-            <div class="ticket-list">
-                <h2>Recent Tickets</h2>
-                <div class="ticket-card">
+            <!-- Create Ticket Form (Initially Hidden) -->
+            <div class="content" id="create-ticket-content" style="display: none;">
+                <div class="ticket-container">
                     <div class="ticket-header">
-                        <span class="ticket-id">#12345</span>
-                        <span class="ticket-status open">Open</span>
+                        <h1><i class="fas fa-ticket-alt"></i> Create New Ticket</h1>
+                        <p>Fill out the form below to create a new support ticket.</p>
                     </div>
-                    <h3 class="ticket-title">Login Issue</h3>
-                    <p class="ticket-description">Unable to log in to the system. Getting an error message.</p>
-                    <div class="ticket-footer">
-                        <span class="ticket-date">Created on: 2023-10-01</span>
-                        <button class="view-details">View Details</button>
-                    </div>
+                    <form id="ticketForm">
+                        <div class="input-group">
+                            <label for="title">Title</label>
+                            <input type="text" id="title" placeholder="Enter ticket title" required>
+                        </div>
+                        <div class="input-group">
+                            <label for="description">Description</label>
+                            <textarea id="description" placeholder="Enter ticket description" rows="5" required></textarea>
+                        </div>
+                        <div class="form-actions">
+                            <button type="submit" class="btn-submit"><i class="fas fa-paper-plane"></i> Submit</button>
+                            <button type="reset" class="btn-reset"><i class="fas fa-undo"></i> Reset</button>
+                        </div>
+                    </form>
                 </div>
             </div>
+            <!-- Messages Section (Initially Hidden) -->
+<div class="content" id="messages-content" style="display: none;">
+    <div class="messages-container">
+        <div class="messages-header">
+            <h1><i class="fas fa-comments"></i> Messages</h1>
+        </div>
+        
+        <div class="chat-box">
+            <div class="message received">
+                <p>Hello, how can I assist you?</p>
+                <span class="timestamp">10:00 AM</span>
+            </div>
+            <div class="message sent">
+                <p>I'm facing a login issue.</p>
+                <span class="timestamp">10:02 AM</span>
+            </div>
+        </div>
+        
+        <div class="chat-input">
+            <input type="text" id="chat-message" placeholder="Type a message...">
+            <button id="send-message"><i class="fas fa-paper-plane"></i></button>
+        </div>
+    </div>
+</div>
+
+
+
+<!-- Profile Section (Initially Hidden) -->
+<div class="content" id="profile-content" style="display: none;">
+    <div class="profile-container">
+        <div class="profile-header">
+            <h1><i class="fas fa-user"></i> Profile</h1>
+        </div>
+        <div class="profile-info">
+            <img src="Imageing.jpg" alt="User Avatar" class="profile-avatar">
+            <h2>Shaurya Soni</h2>
+            <p>Email: shauryasoni262@gmail.com</p>
+            <p>Role: Admin(Leader)</p>
+            <button id="edit-profile"><i class="fas fa-edit"></i> Edit Profile</button>
+        </div>
+        
+        <div class="edit-profile-form" id="edit-profile-form" style="display: none;">
+            <h3>Edit Profile</h3>
+            <label for="profile-name">Name</label>
+            <input type="text" id="profile-name" value="Shaurya Soni">
+            
+            <label for="profile-email">Email</label>
+            <input type="email" id="profile-email" value="shauryasoni262@gmail.com">
+            
+            <label for="profile-role">Role</label>
+            <input type="text" id="profile-role" value="Admin" disabled>
+            
+            <button id="save-profile"><i class="fas fa-save"></i> Save</button>
+            <button id="cancel-profile"><i class="fas fa-times"></i> Cancel</button>
+        </div>
+    </div>
+</div>
+
         </div>
     </div>
 
     <script src="dashboard.js"></script>
+    <script src="script.js"></script>
+
+    <script>
+        document.getElementById("dashboard-link").addEventListener("click", function() {
+            document.getElementById("dashboard-content").style.display = "block";
+            document.getElementById("create-ticket-content").style.display = "none";
+            document.getElementById("page-title").textContent = "Dashboard";
+        });
+
+        document.getElementById("create-ticket-link").addEventListener("click", function() {
+            document.getElementById("dashboard-content").style.display = "none";
+            document.getElementById("create-ticket-content").style.display = "block";
+            document.getElementById("page-title").textContent = "Create Ticket";
+        });
+    </script>
+
 </body>
 </html>
